@@ -4,11 +4,7 @@ import SeasonDisplay from './SeasonDisplay';
 import Spinner from './Spinner';
 
 class App extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = { lat: null, errorMessage: ''};
-
-    }
+    state = { lat: null, errorMessage: ''};
 
     componentDidMount(){
         window.navigator.geolocation.getCurrentPosition(
@@ -24,7 +20,7 @@ class App extends React.Component {
         if (!this.state.errorMessage && this.state.lat){
             return <SeasonDisplay lat={this.state.lat}/>;
         }
-            return <Spinner message="Please accept location request..."/>;
+            return <Spinner message="Waiting for location data, please accept location request..."/>;
     }
 
     render() {
